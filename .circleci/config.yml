@@ -1,0 +1,15 @@
+version: 2.0
+jobs:
+  build:
+    docker:
+      - image: circleci/node:latests
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "b7:ca:d6:59:7d:9f:ba:b9:44:23:03:8a:d1:38:47:53"
+      - run: 
+          command: |
+            git commit --allow-empty -m '[ci skip] test'
+            git push origin master
+      
